@@ -1,3 +1,5 @@
+import { IncomingMessage, ServerResponse } from "http";
+
 type IHobbies = string[];
 
 export interface IUser {
@@ -8,3 +10,17 @@ export interface IUser {
 }
 
 export interface INewUser extends Omit<IUser, 'id'> {};
+
+export interface IEndpointHandler {
+  (req: IncomingMessage, res: ServerResponse): unknown;
+}
+
+export interface IEndpoints {
+  [path: string]: IEndpoint;
+}
+
+export interface IEndpoint {
+  [method: string]: IEndpointHandler;
+}
+
+export type IUsers = Map<string, IUser>;
