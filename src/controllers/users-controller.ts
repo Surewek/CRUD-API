@@ -42,7 +42,6 @@ class UserController {
       users.set(newUser.id, newUser);
 
       const addedUser = users.get(newUser.id);
-      console.log(addedUser);
 
       res.writeHead(201, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify(addedUser));
